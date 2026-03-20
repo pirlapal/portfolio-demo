@@ -124,6 +124,57 @@ src/
 - Sonner for toast notifications
 - Handle loading and error states
 
+### EmailJS Setup
+
+The contact form uses EmailJS to send emails without a backend server. Follow these steps:
+
+**1. Create EmailJS Account**
+- Sign up at [https://www.emailjs.com/](https://www.emailjs.com/)
+- Free tier allows 200 emails/month
+
+**2. Create Email Service**
+- Go to "Email Services" in dashboard
+- Click "Add New Service"
+- Choose your email provider (Gmail recommended)
+- Connect your email account
+- Copy the Service ID
+
+**3. Create Email Template**
+- Go to "Email Templates"
+- Click "Create New Template"
+- Use these template variables in your template:
+  ```
+  From: {{user_name}} <{{user_email}}>
+  Subject: {{subject}}
+
+  {{message}}
+  ```
+- Save and copy the Template ID
+
+**4. Get Public Key**
+- Go to "Account" → "General"
+- Find your Public Key under "API Keys"
+
+**5. Configure Environment Variables**
+- Copy `.env.example` to `.env`
+- Add your credentials:
+  ```env
+  VITE_EMAILJS_SERVICE_ID=service_xxxxx
+  VITE_EMAILJS_TEMPLATE_ID=template_xxxxx
+  VITE_EMAILJS_PUBLIC_KEY=your_public_key
+  ```
+- Restart dev server to load new variables
+
+**6. Test the Form**
+- Fill out the contact form on your site
+- Check your email for the message
+- Check EmailJS dashboard for send status
+
+**Security Notes:**
+- `.env` is in `.gitignore` (never commit credentials)
+- Public key is meant to be exposed in client code
+- EmailJS has rate limiting and domain restrictions
+
 ## Code Quality Standards
 
 ### TypeScript
