@@ -75,7 +75,7 @@ export function Experience({ isDark }: ExperienceProps) {
     <section id="experience" className="py-24 px-6 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00D4FF]/5 to-transparent" />
       
-      <div className="max-w-6xl mx-auto relative z-10" ref={ref}>
+      <div className="max-w-7xl 2xl:max-w-[1600px] mx-auto relative z-10" ref={ref}>
         <motion.h2
           className={`text-5xl md:text-6xl font-bold text-center mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}
           initial={{ opacity: 0, y: 30 }}

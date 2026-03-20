@@ -183,16 +183,15 @@
 html {
   font-size: var(--font-size);
   scroll-behavior: smooth;
-  cursor: none; /* Hide default cursor */
 }
 
 body {
-  cursor: none; /* Hide default cursor */
+  /* Normal cursor behavior for accessibility */
 }
 
-/* Hide default cursor on all interactive elements */
+/* Pointer cursor on interactive elements */
 a, button, input, textarea, select {
-  cursor: none !important;
+  cursor: pointer;
 }
 
 /* Custom scrollbar */

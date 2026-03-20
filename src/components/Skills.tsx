@@ -262,7 +262,7 @@ function NeuralNetworkViz({
           <h3 className={`text-xl font-bold font-mono tracking-wide ${isDark ? 'text-white' : 'text-gray-900'}`}>
             {category.name}
           </h3>
-          <motion.div 
+          <motion.div
             className={`text-xs font-mono mt-0.5 ${isDark ? 'text-[#00D4FF]' : 'text-[#0088CC]'}`}
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -273,11 +273,13 @@ function NeuralNetworkViz({
       </div>
 
       {/* Neural Network SVG */}
-      <div className="relative h-64 flex items-center justify-center px-4">
-        <svg 
-          width="300" 
-          height="240" 
-          className="overflow-visible"
+      <div className="relative h-48 sm:h-56 md:h-60 lg:h-64 flex items-center justify-center px-2 sm:px-4">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 300 240"
+          preserveAspectRatio="xMidYMid meet"
+          className="overflow-visible max-w-[260px] sm:max-w-[280px] md:max-w-[300px]"
         >
           {/* Define gradients */}
           <defs>
@@ -503,7 +505,7 @@ function NeuralNetworkViz({
                   onMouseEnter={() => setHoveredNode(i)}
                   onMouseLeave={() => setHoveredNode(null)}
                 >
-                  <div className={`text-[11px] font-mono whitespace-nowrap font-semibold cursor-pointer transition-all text-right pr-2 ${
+                  <div className={`text-sm font-mono whitespace-nowrap font-semibold cursor-pointer transition-all text-right pr-2 ${
                     isDark ? 'text-white/90 hover:text-[#00D4FF]' : 'text-gray-800 hover:text-[#0088CC]'
                   } ${isThisHovered ? 'scale-110 font-bold' : ''}`}>
                     {node.skill.name}
@@ -591,7 +593,7 @@ export function Skills({ isDark }: SkillsProps) {
         }}
       />
       
-      <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
+      <div className="max-w-7xl 2xl:max-w-[1700px] mx-auto relative z-10" ref={ref}>
         {/* Header */}
         <motion.div
           className="text-center mb-16"

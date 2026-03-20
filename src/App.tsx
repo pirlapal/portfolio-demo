@@ -30,7 +30,7 @@ export default function App() {
   }, [isDark]);
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-[#0A1628]' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen overflow-x-hidden transition-colors duration-500 ${isDark ? 'bg-[#0A1628]' : 'bg-gray-50'}`}>
       <LoadingScreen />
       <Toaster position="bottom-right" theme={isDark ? 'dark' : 'light'} richColors />
       <ScrollProgress />

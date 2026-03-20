@@ -17,10 +17,9 @@ export function Contact({ isDark }: ContactProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // EmailJS Configuration
-  // Replace these with your actual EmailJS credentials from https://www.emailjs.com/
-  const EMAILJS_SERVICE_ID = 'service_qhth5dh'; // Your EmailJS Service ID
-  const EMAILJS_TEMPLATE_ID = 'template_netms03'; // Your EmailJS Template ID
-  const EMAILJS_PUBLIC_KEY = 'bhzDr8IKB76-iNTCi'; // Your EmailJS Public Key
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
   const contactInfo = [
     {

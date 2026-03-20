@@ -19,29 +19,29 @@ interface EducationItem {
 
 const education: EducationItem[] = [
   {
-    school: 'Arizona State University',
+    school: 'Arizona State University, USA',
     degree: 'Master of Science',
     field: 'Software Engineering',
-    date: '2024 - Present',
+    date: 'Aug 2025 – May 2027',
     location: 'Tempe, AZ',
     gpa: '4.0',
     achievements: [
-      'Focus on AI/ML and Distributed Systems',
-      'Graduate Research Assistant',
-      'Teaching Assistant for Software Development'
+      'Focusing on AI/ML',
+      'Next-Gen Tech',
+      'Built for Modern Engineering'
     ]
   },
   {
-    school: 'D.Y. Patil College of Engineering & Technology',
-    degree: 'Bachelor of Engineering',
-    field: 'Computer Engineering',
-    date: '2019 - 2023',
+    school: 'DYPCET, India',
+    degree: 'Bachelor of Technology',
+    field: 'Computer Science Engineering',
+    date: 'Jun 2020 – May 2024',
     location: 'India',
     gpa: '3.8',
     achievements: [
       'Published 2 research papers in AI/ML',
-      'President of Technical Club',
-      'Winner of multiple hackathons'
+      'Proven Leadership Skills',
+      'Multiple Hackathon Winner'
     ]
   }
 ];

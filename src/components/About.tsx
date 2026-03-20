@@ -66,9 +66,9 @@ export function About({ isDark }: AboutProps) {
     <section id="about" className="py-24 px-6 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#8B5CF6]/5 to-transparent" />
       
-      <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
+      <div className="max-w-7xl 2xl:max-w-[1600px] mx-auto relative z-10" ref={ref}>
         <motion.h2
-          className={`text-5xl md:text-6xl font-bold text-center mb-16 ${isDark ? 'text-white' : 'text-gray-900'}`}
+          className={`text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold text-center mb-16 ${isDark ? 'text-white' : 'text-gray-900'}`}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -119,10 +119,10 @@ export function About({ isDark }: AboutProps) {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-6"
           >
-            <p className={`text-lg leading-relaxed ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
+            <p className={`text-base md:text-lg 2xl:text-xl leading-relaxed ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
               Software Engineering grad student at Arizona State University focused on AI/ML + automation. I build full-stack systems and intelligent tools that turn complex problems into reliable products.
             </p>
-            <p className={`text-lg leading-relaxed ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
+            <p className={`text-base md:text-lg 2xl:text-xl leading-relaxed ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
               My background includes research in deep learning applications, and I'm now focused on building core software engineering projects, automation solutions, and agentic AI tools that execute workflows end-to-end. I enjoy designing scalable backends, integrating intelligent models, and shipping systems that are reliable, measurable, and built to last.
             </p>
           </motion.div>
@@ -130,7 +130,7 @@ export function About({ isDark }: AboutProps) {
 
         {/* Stats */}
         <motion.div
-          className="grid grid-cols-3 gap-8 mb-16 max-w-3xl mx-auto"
+          className="grid grid-cols-3 gap-8 mb-16 max-w-4xl 2xl:max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -147,7 +147,7 @@ export function About({ isDark }: AboutProps) {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <h3 className={`text-2xl font-semibold text-center mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Core Technologies</h3>
-          <div className="flex flex-wrap gap-4 justify-center max-w-4xl mx-auto">
+          <div className="flex flex-wrap gap-4 justify-center max-w-5xl 2xl:max-w-6xl mx-auto">
             {skills.map((skill, index) => (
               <motion.span
                 key={skill}

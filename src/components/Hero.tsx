@@ -77,7 +77,7 @@ export function Hero({ isDark }: HeroProps) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-8 2xl:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export function Hero({ isDark }: HeroProps) {
           </motion.div>
 
           <motion.h1
-            className="text-7xl md:text-8xl lg:text-9xl font-bold mb-6 bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#00D4FF] bg-clip-text text-transparent"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] leading-none font-bold mb-6 bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#00D4FF] bg-clip-text text-transparent tracking-wider"
             animate={{
               backgroundPosition: ['0% center', '200% center'],
             }}
@@ -109,19 +109,19 @@ export function Hero({ isDark }: HeroProps) {
               backgroundSize: '200% auto',
             }}
           >
-            PRANAV IRLAPALE
+            PRANAV<br />IRLAPALE
           </motion.h1>
 
           {/* Typing effect subtitle */}
           <motion.div
-            className="h-16 md:h-20 mb-6 font-mono"
+            className="h-12 sm:h-14 md:h-16 lg:h-20 mb-6 font-mono"
             key={titleIndex}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className={`text-3xl md:text-4xl ${isDark ? 'text-white/90' : 'text-gray-800'}`}>
+            <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl ${isDark ? 'text-white/90' : 'text-gray-800'}`}>
               <span className={isDark ? 'text-[#8B5CF6]' : 'text-[#7C4EE0]'}>const</span>{' '}
               <span className="text-[#00D4FF]">role</span>{' '}
               <span className={isDark ? 'text-white/70' : 'text-gray-600'}>=</span>{' '}
@@ -154,12 +154,12 @@ export function Hero({ isDark }: HeroProps) {
           >
             <button
               onClick={() => scrollToSection('projects')}
-              className="group px-8 py-4 rounded-xl bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] text-white font-semibold hover:scale-105 hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all duration-300 relative overflow-hidden"
+              className="group px-5 sm:px-6 md:px-8 py-3 md:py-4 rounded-xl bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] text-white font-semibold hover:scale-105 hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all duration-300 relative overflow-hidden text-sm md:text-base"
             >
               <span className="relative z-10 font-mono">{'<'} View Projects {'/>'}</span>
               <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
             </button>
-            <button className="px-8 py-4 rounded-xl border-2 border-[#00D4FF] text-[#00D4FF] font-semibold hover:scale-105 hover:bg-[#00D4FF]/10 transition-all duration-300 font-mono backdrop-blur-sm">
+            <button className="px-5 sm:px-6 md:px-8 py-3 md:py-4 rounded-xl border-2 border-[#00D4FF] text-[#00D4FF] font-semibold hover:scale-105 hover:bg-[#00D4FF]/10 transition-all duration-300 font-mono backdrop-blur-sm text-sm md:text-base">
               <span>{'{'} Download Resume {'}'}</span>
             </button>
           </motion.div>

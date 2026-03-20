@@ -106,9 +106,15 @@ export function ProjectsOrbit({ isDark, onProjectClick }: ProjectsOrbitProps) {
     const baseAngle = index * 60; // 60 degrees apart (360/6 cards)
     const currentAngle = baseAngle - rotation;
     const angleRad = (currentAngle * Math.PI) / 180;
-    
-    // Orbital radius
-    const radius = 450;
+
+    // Responsive orbital radius based on viewport
+    // Mobile: 180px, Small Tablet: 280px, Tablet: 350px, Desktop: 450px
+    const radius = typeof window !== 'undefined'
+      ? window.innerWidth < 640 ? 180
+        : window.innerWidth < 768 ? 280
+        : window.innerWidth < 1024 ? 350
+        : 450
+      : 450;
     
     // Calculate position on the orbit circle
     const x = Math.sin(angleRad) * radius;
@@ -151,7 +157,7 @@ export function ProjectsOrbit({ isDark, onProjectClick }: ProjectsOrbitProps) {
   };
 
   return (
-    <section id="projects" className="py-24 px-6 relative overflow-hidden" style={{ perspective: '2000px' }}>
+    <section id="projects" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden" style={{ perspective: '2000px' }}>
       {/* Parallax rotating background grid */}
       <motion.div
         className="absolute inset-0 opacity-10"
@@ -168,7 +174,7 @@ export function ProjectsOrbit({ isDark, onProjectClick }: ProjectsOrbitProps) {
         }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
+      <div className="max-w-7xl 2xl:max-w-[1800px] mx-auto relative z-10" ref={ref}>
         <motion.div
           className="text-center mb-32"
           initial={{ opacity: 0, y: 30 }}
@@ -193,7 +199,7 @@ export function ProjectsOrbit({ isDark, onProjectClick }: ProjectsOrbitProps) {
         </motion.div>
 
         {/* Orbit Container */}
-        <div className="relative h-[700px] flex items-center justify-center">
+        <div className="relative h-[450px] sm:h-[550px] md:h-[620px] lg:h-[700px] flex items-center justify-center">
           {projects.map((project, index) => {
             const position = getCardPosition(index);
             const isActive = index === activeIndex;
@@ -232,7 +238,7 @@ export function ProjectsOrbit({ isDark, onProjectClick }: ProjectsOrbitProps) {
                 whileHover={isActive ? { scale: 1.02 } : {}}
               >
                 <motion.div
-                  className={`w-[500px] rounded-2xl overflow-visible transition-all ${
+                  className={`w-[85vw] max-w-[340px] sm:max-w-[380px] md:max-w-[440px] lg:w-[500px] rounded-2xl overflow-visible transition-all ${
                     isActive ? 'ring-4 ring-[#00D4FF] shadow-2xl shadow-[#00D4FF]/50' : ''
                   }`}
                   animate={{
