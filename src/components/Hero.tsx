@@ -1,256 +1,150 @@
-import { motion } from 'motion/react';
-import { Github, Linkedin, Mail, MapPin, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Github, Linkedin, Mail, ArrowDown, MapPin } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-interface HeroProps {
-  isDark: boolean;
-}
+const roles = ['Software Engineer', 'AI/ML Enthusiast', 'Automation Specialist'];
 
-export function Hero({ isDark }: HeroProps) {
-  const [titleIndex, setTitleIndex] = useState(0);
-  const titles = ['Software Engineer', 'AI/ML Enthusiast', 'Automation Specialist', 'Photographer', 'Videographer'];
+export function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTitleIndex((prev) => (prev + 1) % titles.length);
+      setRoleIndex((prev) => (prev + 1) % roles.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated tech grid background */}
-      <div className="absolute inset-0">
-        <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-br from-[#0A1628] via-[#1a2744] to-[#0A1628]' : 'bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50'}`} />
-        
-        {/* Animated grid */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #00D4FF 1px, transparent 1px),
-              linear-gradient(to bottom, #00D4FF 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px',
-            animation: 'gridMove 20s linear infinite'
-          }}
-        />
-        
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-[#00D4FF] rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0, 1, 0],
-                scale: [0, 1.5, 0],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Static ambient glow */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: isDark
-              ? 'radial-gradient(circle at 30% 50%, rgba(0, 212, 255, 0.12) 0%, transparent 50%), radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.12) 0%, transparent 50%)'
-              : 'radial-gradient(circle at 30% 50%, rgba(0, 136, 204, 0.08) 0%, transparent 50%), radial-gradient(circle at 70% 60%, rgba(124, 78, 224, 0.08) 0%, transparent 50%)'
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 lg:px-8 2xl:px-12 text-center">
+    <section className="relative min-h-screen flex items-center justify-center px-6 bg-[#F7F4F0]">
+      <div className="max-w-5xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Code-style greeting */}
           <motion.div
-            className={`mb-4 font-mono text-sm md:text-base ${isDark ? 'text-[#00D4FF]' : 'text-[#0088CC]'}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full glass shadow-sm"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
           >
-            <span className={isDark ? 'text-[#8B5CF6]' : 'text-[#7C4EE0]'}>{'<'}</span>
-            <span>Hello World</span>
-            <span className={isDark ? 'text-[#8B5CF6]' : 'text-[#7C4EE0]'}>{' />'}</span>
+            <MapPin className="w-4 h-4 text-[#A0725A]" />
+            <span className="text-stone-500 text-sm font-medium">Tempe, Arizona</span>
           </motion.div>
 
-          <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] leading-none font-bold mb-6 bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#00D4FF] bg-clip-text text-transparent tracking-wider"
-            animate={{
-              backgroundPosition: ['0% center', '200% center'],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-            style={{
-              backgroundSize: '200% auto',
-            }}
-          >
-            PRANAV<br />IRLAPALE
-          </motion.h1>
+          <h1 className="font-['Poppins'] font-bold tracking-tight leading-none mb-6 text-balance">
+            <motion.div
+              className="text-[3rem] sm:text-[5.375rem] md:text-[6rem] lg:text-[7rem]"
+              style={{ letterSpacing: '-0.04em' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              <span className="text-stone-800">Pranav</span>
+            </motion.div>
+            <motion.div
+              className="text-[3rem] sm:text-[5.375rem] md:text-[6rem] lg:text-[7rem]"
+              style={{ letterSpacing: '-0.04em' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.6 }}
+            >
+              <span className="text-[#A0725A]">Irlapale</span>
+            </motion.div>
+          </h1>
 
-          {/* Typing effect subtitle */}
+          <div className="h-10 mb-8 flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={roleIndex}
+                className="text-xl md:text-2xl text-stone-500 font-medium"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                {roles[roleIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+
+          <motion.p
+            className="text-stone-500 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
+            Building full-stack systems and intelligent tools that turn
+            complex problems into reliable products.
+          </motion.p>
+
           <motion.div
-            className="h-12 sm:h-14 md:h-16 lg:h-20 mb-6 font-mono"
-            key={titleIndex}
+            className="flex flex-wrap gap-4 justify-center mb-14"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
           >
-            <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl ${isDark ? 'text-white/90' : 'text-gray-800'}`}>
-              <span className={isDark ? 'text-[#8B5CF6]' : 'text-[#7C4EE0]'}>const</span>{' '}
-              <span className="text-[#00D4FF]">role</span>{' '}
-              <span className={isDark ? 'text-white/70' : 'text-gray-600'}>=</span>{' '}
-              <span className={isDark ? 'text-green-400' : 'text-green-600'}>"{titles[titleIndex]}"</span>
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-                className={isDark ? 'text-white/90' : 'text-gray-800'}
+            <motion.a
+              href="#projects"
+              className="px-8 py-4 rounded-xl bg-stone-800 text-white font-semibold text-sm shadow-lg hover:bg-stone-900 transition-all duration-200"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              style={{ fontFamily: 'Poppins' }}
+            >
+              View Projects
+            </motion.a>
+
+            <motion.button
+              disabled
+              className="px-8 py-4 rounded-xl border-2 border-stone-300 bg-white text-stone-400 font-semibold text-sm opacity-60 cursor-not-allowed"
+              style={{ fontFamily: 'Poppins' }}
+              title="Resume will be available soon"
+            >
+              Resume Coming Soon
+            </motion.button>
+          </motion.div>
+
+          <motion.div
+            className="flex gap-4 justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
+            {[
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/pranav-irlapale', label: 'LinkedIn' },
+              { icon: Github, href: 'https://github.com/viraj091', label: 'GitHub' },
+              { icon: Mail, href: 'mailto:pirlapal@asu.edu', label: 'Email' },
+            ].map(({ icon: Icon, href, label }) => (
+              <motion.a
+                key={label}
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="p-3.5 rounded-xl border-2 border-stone-200 bg-white text-stone-400 hover:text-[#A0725A] hover:border-stone-300 transition-all duration-200"
+                whileHover={{ y: -3, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={label}
               >
-                |
-              </motion.span>
-            </h2>
-          </motion.div>
-
-          <motion.div
-            className={`flex items-center justify-center gap-2 mb-10 font-mono ${isDark ? 'text-white/70' : 'text-gray-600'}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            <MapPin className="w-5 h-5 text-[#00D4FF]" />
-            <span className="text-lg">Tempe, AZ</span>
-          </motion.div>
-
-          <motion.div
-            className="flex flex-wrap gap-4 justify-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="group px-5 sm:px-6 md:px-8 py-3 md:py-4 rounded-xl bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] text-white font-semibold hover:scale-105 hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all duration-300 relative overflow-hidden text-sm md:text-base"
-            >
-              <span className="relative z-10 font-mono">{'<'} View Projects {'/>'}</span>
-              <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-            </button>
-            <button className="px-5 sm:px-6 md:px-8 py-3 md:py-4 rounded-xl border-2 border-[#00D4FF] text-[#00D4FF] font-semibold hover:scale-105 hover:bg-[#00D4FF]/10 transition-all duration-300 font-mono backdrop-blur-sm text-sm md:text-base">
-              <span>{'{'} Download Resume {'}'}</span>
-            </button>
-          </motion.div>
-
-          <motion.div
-            className="flex gap-6 justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-          >
-            <motion.a
-              href="https://www.linkedin.com/in/pranav-irlapale"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full backdrop-blur-sm text-white"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}
-              whileHover={{ scale: 1.1, rotate: 12 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Linkedin className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              href="https://github.com/viraj091"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full backdrop-blur-sm text-white"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}
-              whileHover={{ scale: 1.1, rotate: 12 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Github className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              href="mailto:pirlapal@asu.edu"
-              className="p-3 rounded-full backdrop-blur-sm text-white"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}
-              whileHover={{ scale: 1.1, rotate: 12 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Mail className="w-6 h-6" />
-            </motion.a>
-          </motion.div>
-
-          {/* Tech stack ticker */}
-          <motion.div
-            className="mt-16 font-mono text-sm text-white/50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            <div className="overflow-hidden">
-              <motion.div
-                className="flex gap-8 whitespace-nowrap"
-                animate={{ x: [0, -1000] }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              >
-                {['Python', 'React', 'TensorFlow', 'Node.js', 'AWS', 'PyTorch', 'MongoDB', 'TypeScript'].map((tech) => (
-                  <span key={tech} className="text-[#00D4FF]/50">
-                    {tech}
-                  </span>
-                ))}
-                {['Python', 'React', 'TensorFlow', 'Node.js', 'AWS', 'PyTorch', 'MongoDB', 'TypeScript'].map((tech) => (
-                  <span key={`${tech}-2`} className="text-[#00D4FF]/50">
-                    {tech}
-                  </span>
-                ))}
-              </motion.div>
-            </div>
+                <Icon className="w-5 h-5" />
+              </motion.a>
+            ))}
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
       >
-        <div className="flex flex-col items-center gap-2">
-          <ChevronDown className="w-8 h-8 text-[#00D4FF]" />
-          <span className="text-white/50 text-xs font-mono">scroll</span>
-        </div>
+        <span className="text-xs text-stone-400 uppercase tracking-wider font-medium">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ArrowDown className="w-5 h-5 text-[#A0725A]" />
+        </motion.div>
       </motion.div>
     </section>
   );

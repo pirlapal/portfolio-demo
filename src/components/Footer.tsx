@@ -1,99 +1,66 @@
-import { motion } from 'motion/react';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
-interface FooterProps {
-  isDark: boolean;
-}
+const navLinks = [
+  { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Publications', href: '#publications' },
+  { name: 'Certifications', href: '#certifications' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Education', href: '#education' },
+  { name: 'Contact', href: '#contact' },
+];
 
-export function Footer({ isDark }: FooterProps) {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
+const socialLinks = [
+  { icon: Github, href: 'https://github.com/viraj091', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/pranav-irlapale', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:pirlapal@asu.edu', label: 'Email' },
+];
 
-  const quickLinks = [
-    { name: 'About', id: 'about' },
-    { name: 'Experience', id: 'experience' },
-    { name: 'Projects', id: 'projects' },
-    { name: 'Skills', id: 'skills' },
-    { name: 'Education', id: 'education' },
-    { name: 'Publications', id: 'publications' },
-    { name: 'Contact', id: 'contact' }
-  ];
-
+export function Footer() {
   return (
-    <footer className={`relative py-12 px-6 border-t ${isDark ? 'border-white/10' : 'border-gray-200'}`}>
-      <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-t from-[#0A1628] to-transparent' : 'bg-gradient-to-t from-gray-50 to-transparent'}`} />
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Quick Links */}
-        <div className="flex flex-wrap justify-center gap-6 mb-8">
-          {quickLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => scrollToSection(link.id)}
-              className={`transition-colors ${
-                isDark ? 'text-white/70 hover:text-[#00D4FF]' : 'text-gray-600 hover:text-[#00D4FF]'
-              }`}
-            >
-              {link.name}
-            </button>
-          ))}
+    <footer className="border-t border-stone-200 py-12 px-6 bg-[#F7F4F0]">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-10">
+          <div>
+            <p className="text-stone-900 font-bold text-lg mb-1" style={{ fontFamily: 'Poppins' }}>
+              Pranav Irlapale
+            </p>
+            <p className="text-stone-500 text-sm">Software Engineer & AI/ML Enthusiast</p>
+          </div>
+
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-stone-500 text-sm hover:text-[#A0725A] transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
         </div>
 
-        {/* Social Links */}
-        <div className="flex justify-center gap-6 mb-8">
-          <motion.a
-            href="https://github.com/viraj091"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`p-3 rounded-full transition-all ${
-              isDark 
-                ? 'bg-white/5 text-white/70 hover:bg-gradient-to-r hover:from-[#00D4FF] hover:to-[#8B5CF6] hover:text-white' 
-                : 'bg-gray-100 text-gray-600 hover:bg-gradient-to-r hover:from-[#00D4FF] hover:to-[#8B5CF6] hover:text-white'
-            }`}
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Github className="w-5 h-5" />
-          </motion.a>
-          <motion.a
-            href="https://www.linkedin.com/in/pranav-irlapale"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`p-3 rounded-full transition-all ${
-              isDark 
-                ? 'bg-white/10 text-white hover:bg-[#00D4FF] hover:text-white' 
-                : 'bg-gray-200 text-gray-700 hover:bg-[#00D4FF] hover:text-white'
-            }`}
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Linkedin className="w-5 h-5" />
-          </motion.a>
-          <motion.a
-            href="mailto:pirlapal@asu.edu"
-            className={`p-3 rounded-full transition-all ${
-              isDark 
-                ? 'bg-white/5 text-white/70 hover:bg-gradient-to-r hover:from-[#00D4FF] hover:to-[#8B5CF6] hover:text-white' 
-                : 'bg-gray-100 text-gray-600 hover:bg-gradient-to-r hover:from-[#00D4FF] hover:to-[#8B5CF6] hover:text-white'
-            }`}
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Mail className="w-5 h-5" />
-          </motion.a>
-        </div>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pt-8 border-t border-stone-200">
+          <p className="text-stone-500 text-sm">
+            &copy; {new Date().getFullYear()} Pranav Irlapale. Built with React, Tailwind CSS & Framer Motion.
+          </p>
 
-        {/* Copyright */}
-        <div className="text-center">
-          <p className={`flex items-center justify-center gap-2 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
-            <span>Designed & Built by Pranav Irlapale © 2025</span>
-            <Heart className="w-4 h-4 text-[#8B5CF6]" />
-          </p>
-          <p className={`text-sm mt-2 ${isDark ? 'text-white/40' : 'text-gray-500'}`}>
-            Made with React, Tailwind CSS, and Motion
-          </p>
+          <div className="flex gap-3">
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="p-2.5 rounded-lg border border-stone-200 text-stone-500 hover:text-[#A0725A] hover:border-stone-300 transition-all duration-200"
+                aria-label={label}
+              >
+                <Icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
