@@ -1,8 +1,12 @@
-# 🚀 Modern Portfolio Website
+# Earlier Portfolio Prototype
+
+This repository preserves an earlier portfolio implementation. Its design and career content may differ from the current site. For current projects, experience, and contact details, use [Pranav's live portfolio](https://pranavirlapale.netlify.app/) and [GitHub profile](https://github.com/pirlapal).
+
+The development notes below describe this prototype.
 
 A beautiful, responsive portfolio website built with React, TypeScript, and Tailwind CSS featuring smooth animations, dark/light theme support, and an interactive project showcase.
 
-**Live Demo**: [Your deployed URL]
+**Current portfolio**: https://pranavirlapale.netlify.app/
 
 **Original Design**: [Figma Design](https://www.figma.com/design/pZeEuyuiO1WbHkH8BebXwz/Pranav-Portfolio)
 
@@ -52,8 +56,8 @@ A beautiful, responsive portfolio website built with React, TypeScript, and Tail
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/pirlapal/Pranavportfolio.git
-   cd Pranavportfolio
+   git clone https://github.com/pirlapal/portfolio-demo.git
+   cd portfolio-demo
    ```
 
 2. **Install dependencies**
@@ -377,9 +381,9 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📬 Contact
 
 **Pranav Irlapale**
-- Email: pirlapal@asu.edu
+- Email: irlapalepranav@gmail.com
 - LinkedIn: [pranav-irlapale](https://www.linkedin.com/in/pranav-irlapale)
-- GitHub: [viraj091](https://github.com/viraj091)
+- GitHub: [pirlapal](https://github.com/pirlapal)
 
 ---
 
